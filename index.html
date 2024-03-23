@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #F0F0F0;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 0.5s ease;
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    h2 {
+        text-align: center;
+        animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.05);
+        }
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime-local"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        animation: fadeInLeft 0.5s ease;
+    }
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    input[type="text"]:hover,
+    input[type="password"]:hover {
+        border-color: #4CAF50;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        animation: scaleIn 0.5s ease;
+    }
+    input[type="submit"]:hover {
+        background-color: #45A049;
+        animation: bounce 0.5s;
+    }
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    input[type="submit"]:active {
+        background-color: #3e8e41;
+        animation: none; /* Remove animation on click */
+    }
+    /* Media Queries */
+    @media only screen and (max-width: 600px) {
+        .container {
+            width: 80%;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>User Registration</h2>
+    <form id="registrationForm" method="post" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Register">
+    </form>
+</div>
+<script>
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
